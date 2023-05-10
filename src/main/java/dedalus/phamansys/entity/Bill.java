@@ -32,7 +32,7 @@ public class Bill {
 	private Long TotalAmount;
 
 	@OneToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "BillNo", referencedColumnName = "Id")
+	@JoinColumn(name = "No", referencedColumnName = "Id")
 	private Bill DrugDetails;
 
 	public Long getNo() {
