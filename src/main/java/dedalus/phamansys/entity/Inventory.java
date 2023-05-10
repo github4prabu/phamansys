@@ -3,12 +3,16 @@ package dedalus.phamansys.entity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "Inventory")
 public class Inventory {
 
 	@Id
@@ -25,8 +29,8 @@ public class Inventory {
 	private Long DealerId;
 
 	@OneToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "DealerId", referencedColumnName = "DrugCode")
-	private Inventory InventoryDetails;
+	@JoinColumn(name = "DrugCode", referencedColumnName = "Id")
+	private Inventory DrugDetails;
 
 	public Long getDrugCode() {
 		return DrugCode;
@@ -61,17 +65,17 @@ public class Inventory {
 	}
 
 	public Inventory getInventoryDetails() {
-		return InventoryDetails;
+		return DrugDetails;
 	}
 
 	public void setInventoryDetails(Inventory inventoryDetails) {
-		InventoryDetails = inventoryDetails;
+		DrugDetails = inventoryDetails;
 	}
 
 	@Override
 	public String toString() {
 		return "Inventory [DrugCode=" + DrugCode + ", Quantity=" + Quantity + ", Date=" + Date + ", DealerId="
-				+ DealerId + ", InventoryDetails=" + InventoryDetails + "]";
+				+ DealerId + ", InventoryDetails=" + DrugDetails + "]";
 	}
 
 	public Inventory() {

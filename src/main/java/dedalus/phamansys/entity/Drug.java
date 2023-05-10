@@ -4,12 +4,17 @@ package dedalus.phamansys.entity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
+
+@Entity
+@Table(name = "drug")
 public class Drug {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,7 +32,7 @@ public class Drug {
 	@Override
 	public String toString() {
 		return "Drug [Id=" + Id + ", Name=" + Name + ", Category=" + Category + ", price=" + price + ", ExpiryDate="
-				+ ExpiryDate + ", ManufactureDate=" + ManufactureDate + ", DrugItems=" + DrugItems + "]";
+				+ ExpiryDate + ", ManufactureDate=" + ManufactureDate + ", DrugItems=" + DrugDetails + "]";
 	}
 
 	public Long getId() {
@@ -79,11 +84,11 @@ public class Drug {
 	}
 
 	public Drug getDrugItems() {
-		return DrugItems;
+		return DrugDetails;
 	}
 
 	public void setDrugItems(Drug drugItems) {
-		DrugItems = drugItems;
+		DrugDetails = drugItems;
 	}
 
 	@Column(nullable = false)
@@ -94,7 +99,7 @@ public class Drug {
 
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "Drugcode", referencedColumnName = "Id")
-	private Drug DrugItems;
+	private Drug DrugDetails;
 
 	public Drug() {
 		super();

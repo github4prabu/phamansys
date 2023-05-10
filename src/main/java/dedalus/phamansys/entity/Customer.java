@@ -3,12 +3,17 @@ package dedalus.phamansys.entity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
+
+@Entity
+@Table(name = "Customer")
 public class Customer {
 
 	@Id
@@ -19,8 +24,8 @@ public class Customer {
 	private String CustomerName;
 
 	@OneToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "CustomerName", referencedColumnName = "CustomerId")
-	private Customer CustomerDetails;
+	@JoinColumn(name = "CustomerId", referencedColumnName = "Id")
+	private Customer DrugDetails;
 
 	public Long getCustomerId() {
 		return CustomerId;
@@ -39,17 +44,17 @@ public class Customer {
 	}
 
 	public Customer getCustomerDetails() {
-		return CustomerDetails;
+		return DrugDetails;
 	}
 
 	public void setCustomerDetails(Customer customerDetails) {
-		CustomerDetails = customerDetails;
+		DrugDetails = customerDetails;
 	}
 
 	@Override
 	public String toString() {
 		return "Customer [CustomerId=" + CustomerId + ", CustomerName=" + CustomerName + ", CustomerDetails="
-				+ CustomerDetails + "]";
+				+ DrugDetails + "]";
 	}
 
 	public Customer() {

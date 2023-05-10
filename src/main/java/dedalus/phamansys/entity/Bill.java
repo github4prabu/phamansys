@@ -3,12 +3,16 @@ package dedalus.phamansys.entity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "Bill")
 public class Bill {
 
 	@Id
@@ -28,8 +32,8 @@ public class Bill {
 	private Long TotalAmount;
 
 	@OneToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "BillNo", referencedColumnName = "No")
-	private Bill BillingProcess;
+	@JoinColumn(name = "BillNo", referencedColumnName = "Id")
+	private Bill DrugDetails;
 
 	public Long getNo() {
 		return No;
@@ -72,17 +76,17 @@ public class Bill {
 	}
 
 	public Bill getBillingProcess() {
-		return BillingProcess;
+		return DrugDetails;
 	}
 
 	public void setBillingProcess(Bill billingProcess) {
-		BillingProcess = billingProcess;
+		DrugDetails = billingProcess;
 	}
 
 	@Override
 	public String toString() {
 		return "Bill [No=" + No + ", CustomerId=" + CustomerId + ", DoctorName=" + DoctorName + ", DrugItems="
-				+ DrugItems + ", TotalAmount=" + TotalAmount + ", BillingProcess=" + BillingProcess + "]";
+				+ DrugItems + ", TotalAmount=" + TotalAmount + ", BillingProcess=" + DrugDetails + "]";
 	}
 
 	public Bill() {
