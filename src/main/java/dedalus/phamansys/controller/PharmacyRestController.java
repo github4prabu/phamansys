@@ -1,5 +1,7 @@
 package dedalus.phamansys.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+
 
 import dedalus.phamansys.entity.Bill;
 import dedalus.phamansys.entity.Customer;
@@ -32,7 +36,6 @@ public class PharmacyRestController {
 		return "Welcome to Pha Man Sys!";
 	}
 	
-	
 	@PostMapping("/addDrug")
 	public Drug addDrug(@RequestBody Drug drug) {
 		System.out.println(drug.toString());
@@ -40,7 +43,7 @@ public class PharmacyRestController {
 	}
 	//@PreAuthorize("hasAuthority()")
 	@PostMapping("/Customer")
-	public Customer drug(@RequestBody Customer Customer) {
+	public Customer addCustomer(@RequestBody Customer Customer) {
 		return DrugService.cus(Customer);
 	}
 	
@@ -69,9 +72,9 @@ public class PharmacyRestController {
 		DrugService.deleteCustomerBycustomername(customername);
 	}
 	
-//	  @DeleteMapping("/deleteTheater/{SlotId}")
-//
-//	    public void deleteEmployee(@PathVariable("SlotId") String SlotId) {
-//
-//	         apposervice.deleteEmployeeBySlotId(SlotId);
+	@GetMapping("/listAllDrugs")
+	public List<Drug> listAllTravellers() {
+		return DrugService.listAllDrugs();
+	}
+	
 }

@@ -1,7 +1,11 @@
 package dedalus.phamansys.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+
 
 import dedalus.phamansys.entity.Bill;
 import dedalus.phamansys.entity.Customer;
@@ -74,9 +78,11 @@ public class DrugServiceImpl implements DrugService {
 		CustomerRepository.deleteByCustomername(customername);
 		}
 
-//	@Override
-//	public Customer updateCustomer(Customer customerDetail) {
-//		// TODO Auto-generated method stub
-//		return CustomerRepository.save(customerDetail);
-//	}
+	@Override
+	public List<Drug> listAllDrugs() {
+		// TODO Auto-generated method stub
+		return (List<Drug>) DrugRepository.findAll();
+	}
+
+
 }

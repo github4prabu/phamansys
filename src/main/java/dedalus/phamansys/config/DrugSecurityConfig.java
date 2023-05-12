@@ -22,15 +22,19 @@ public class DrugSecurityConfig {
 				"/swagger-resources/configuration/security", 
 				"/webjars/**",
 				"/swagger-ui.html","/swagger-ui/**").permitAll()
+		.requestMatchers("/login/**").permitAll()
         .requestMatchers("/welcome/**").permitAll()
         .requestMatchers("/addDrug").permitAll()
         .requestMatchers("/pharmacist").permitAll()
         .requestMatchers("/Customer").authenticated()
-		.requestMatchers("/inventory").permitAll();
+		.requestMatchers("/inventory").permitAll()
+		.requestMatchers("/billing").permitAll()
+		.requestMatchers("/listAllDrugs/**").permitAll().and().httpBasic();
 		
 
 		http.httpBasic();
 		http.csrf().disable(); 
+		http.cors();
 		return http.build();
 	}
 }

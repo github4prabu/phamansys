@@ -19,7 +19,7 @@ public class Bill {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long no;
 	
-	@Column(nullable = false,unique = true)
+	@Column(nullable = false)
 	private Long customerid;
 	
 	@Column(nullable = false)

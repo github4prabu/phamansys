@@ -23,7 +23,7 @@ public class Inventory {
 	private Long quantity;
 	
 	@Column(nullable = false)
-	private Long inventorydate;
+	private String inventorydate;
 	
 	@Column(nullable = false)
 	private Long dealerid;
@@ -44,11 +44,11 @@ public class Inventory {
 		this.quantity = quantity;
 	}
 
-	public Long getInventorydate() {
+	public String getInventorydate() {
 		return inventorydate;
 	}
 
-	public void setInventorydate(Long inventorydate) {
+	public void setInventorydate(String inventorydate) {
 		this.inventorydate = inventorydate;
 	}
 

@@ -2,6 +2,10 @@ package dedalus.phamansys.service;
 
 
 
+import java.util.List;
+
+
+
 import dedalus.phamansys.entity.Bill;
 import dedalus.phamansys.entity.Customer;
 import dedalus.phamansys.entity.Drug;
@@ -23,4 +27,6 @@ public interface DrugService {
 	public Pharmacist userUpdate(Pharmacist name);
 	
 	public void deleteCustomerBycustomername(String customername);
+	
+	public List<Drug> listAllDrugs();
 }
