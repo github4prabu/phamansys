@@ -12,76 +12,59 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Inventory")
+@Table(name = "pms_inventory")
 public class Inventory {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long DrugCode;
+	private Long drugcode;
 	
 	@Column(nullable = false,unique = true)
-	private Long Quantity;
+	private Long quantity;
 	
 	@Column(nullable = false)
-	private Long Date;
+	private Long inventorydate;
 	
 	@Column(nullable = false)
-	private Long DealerId;
+	private Long dealerid;
 
-	@OneToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "DrugCode", referencedColumnName = "Id")
-	private Inventory DrugDetails;
-
-	public Long getDrugCode() {
-		return DrugCode;
+	public Long getDrugcode() {
+		return drugcode;
 	}
 
-	public void setDrugCode(Long drugCode) {
-		DrugCode = drugCode;
+	public void setDrugcode(Long drugcode) {
+		this.drugcode = drugcode;
 	}
 
 	public Long getQuantity() {
-		return Quantity;
+		return quantity;
 	}
 
 	public void setQuantity(Long quantity) {
-		Quantity = quantity;
+		this.quantity = quantity;
 	}
 
-	public Long getDate() {
-		return Date;
+	public Long getInventorydate() {
+		return inventorydate;
 	}
 
-	public void setDate(Long date) {
-		Date = date;
+	public void setInventorydate(Long inventorydate) {
+		this.inventorydate = inventorydate;
 	}
 
-	public Long getDealerId() {
-		return DealerId;
+	public Long getDealerid() {
+		return dealerid;
 	}
 
-	public void setDealerId(Long dealerId) {
-		DealerId = dealerId;
-	}
-
-	public Inventory getInventoryDetails() {
-		return DrugDetails;
-	}
-
-	public void setInventoryDetails(Inventory inventoryDetails) {
-		DrugDetails = inventoryDetails;
+	public void setDealerid(Long dealerid) {
+		this.dealerid = dealerid;
 	}
 
 	@Override
 	public String toString() {
-		return "Inventory [DrugCode=" + DrugCode + ", Quantity=" + Quantity + ", Date=" + Date + ", DealerId="
-				+ DealerId + ", InventoryDetails=" + DrugDetails + "]";
+		return "Inventory [drugcode=" + drugcode + ", quantity=" + quantity + ", inventorydate=" + inventorydate
+				+ ", dealerid=" + dealerid + "]";
 	}
 
-	public Inventory() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
 	
 }

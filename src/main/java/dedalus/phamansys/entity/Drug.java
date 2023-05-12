@@ -14,49 +14,50 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name = "drug")
+@Table(name = "pms_drug")
 public class Drug {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long Id;
-	
-	@Column(nullable = false,unique = true)
-	private String Name;
+	private Long id;
 	
 	@Column(nullable = false)
-	private String Category;
+	private String name;
+	
+	@Column(nullable = false)
+	private String category;
 	
 	@Column(nullable = false)
 	private Long price;
 	
-	@Override
-	public String toString() {
-		return "Drug [Id=" + Id + ", Name=" + Name + ", Category=" + Category + ", price=" + price + ", ExpiryDate="
-				+ ExpiryDate + ", ManufactureDate=" + ManufactureDate + ", DrugItems=" + DrugDetails + "]";
-	}
+	@Column(nullable = true)
+	private String expirydate;
+	
+	@Column(nullable = false)
+	private String manufacturedate;
 
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 	public String getCategory() {
-		return Category;
+		return category;
 	}
 
 	public void setCategory(String category) {
-		Category = category;
+		this.category = category;
 	}
 
 	public Long getPrice() {
@@ -67,43 +68,44 @@ public class Drug {
 		this.price = price;
 	}
 
-	public Long getExpiryDate() {
-		return ExpiryDate;
+	public String getExpirydate() {
+		return expirydate;
 	}
 
-	public void setExpiryDate(Long expiryDate) {
-		ExpiryDate = expiryDate;
+	public void setExpirydate(String expiryDate) {
+		this.expirydate = expiryDate;
 	}
 
-	public Long getManufactureDate() {
-		return ManufactureDate;
+	public String getManufacturedate() {
+		return manufacturedate;
 	}
 
-	public void setManufactureDate(Long manufactureDate) {
-		ManufactureDate = manufactureDate;
+	public void setManufacturedate(String manufacturedate) {
+		this.manufacturedate = manufacturedate;
 	}
 
-	public Drug getDrugItems() {
-		return DrugDetails;
+	@Override
+	public String toString() {
+		return "Drug [id=" + id + ", name=" + name + ", category=" + category + ", price=" + price + ", expirydate="
+				+ expirydate + ", manufacturedate=" + manufacturedate + "]";
 	}
 
-	public void setDrugItems(Drug drugItems) {
-		DrugDetails = drugItems;
+	public Drug(Long id, String name, String category, Long price, String expiryDate, String manufacturedate) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.category = category;
+		this.price = price;
+		this.expirydate = expiryDate;
+		this.manufacturedate = manufacturedate;
 	}
-
-	@Column(nullable = false)
-	private Long ExpiryDate;
-	
-	@Column(nullable = false)
-	private Long ManufactureDate;
-
-	@OneToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "Drugcode", referencedColumnName = "Id")
-	private Drug DrugDetails;
 
 	public Drug() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 
+
+	
 }

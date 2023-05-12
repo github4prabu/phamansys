@@ -13,63 +13,34 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name = "Pharmacist")
+@Table(name = "pms_pharmacist")
 public class Pharmacist {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long UserId;
+	private Long userid;
 	
-	@Column(nullable = false,unique = true)
-	private String UserPwd;
-	
+	@Column(nullable = false)
+	private String userpwd;
 
-	@OneToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "UserId", referencedColumnName = "Id")
-	private Pharmacist DrugDetails;
-
-
-	public Long getUserId() {
-		return UserId;
+	public Long getUserid() {
+		return userid;
 	}
 
-
-	public void setUserId(Long userId) {
-		UserId = userId;
+	public void setUserid(Long userid) {
+		this.userid = userid;
 	}
 
-
-	public String getUserPwd() {
-		return UserPwd;
+	public String getUserpwd() {
+		return userpwd;
 	}
 
-
-	public void setUserPwd(String userPwd) {
-		UserPwd = userPwd;
+	public void setUserpwd(String userpwd) {
+		this.userpwd = userpwd;
 	}
-
-
-	public Pharmacist getPharmacistDetails() {
-		return DrugDetails;
-	}
-
-
-	public void setPharmacistDetails(Pharmacist pharmacistDetails) {
-		DrugDetails = pharmacistDetails;
-	}
-
 
 	@Override
 	public String toString() {
-		return "Pharmacist [UserId=" + UserId + ", UserPwd=" + UserPwd + ", PharmacistDetails=" + DrugDetails
-				+ "]";
+		return "Pharmacist [userid=" + userid + ", userpwd=" + userpwd + "]";
 	}
-
-
-	public Pharmacist() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	
 }

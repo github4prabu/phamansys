@@ -12,87 +12,70 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Bill")
+@Table(name = "pms_Bill")
 public class Bill {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long No;
+	private Long no;
 	
 	@Column(nullable = false,unique = true)
-	private String CustomerId;
+	private Long customerid;
 	
 	@Column(nullable = false)
-	private String DoctorName;
+	private String doctorname;
 	
 	@Column(nullable = false)
-	private String DrugItems;
+	private Long drugitems;
 	
 	@Column(nullable = false)
-	private Long TotalAmount;
-
-	@OneToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "No", referencedColumnName = "Id")
-	private Bill DrugDetails;
+	private Long totalamount;
 
 	public Long getNo() {
-		return No;
+		return no;
 	}
 
 	public void setNo(Long no) {
-		No = no;
+		this.no = no;
 	}
 
-	public String getCustomerId() {
-		return CustomerId;
+	public Long getCustomerid() {
+		return customerid;
 	}
 
-	public void setCustomerId(String customerId) {
-		CustomerId = customerId;
+	public void setCustomerid(Long customerid) {
+		this.customerid = customerid;
 	}
 
-	public String getDoctorName() {
-		return DoctorName;
+	public String getDoctorname() {
+		return doctorname;
 	}
 
-	public void setDoctorName(String doctorName) {
-		DoctorName = doctorName;
+	public void setDoctorname(String doctorname) {
+		this.doctorname = doctorname;
 	}
 
-	public String getDrugItems() {
-		return DrugItems;
+	public Long getDrugitems() {
+		return drugitems;
 	}
 
-	public void setDrugItems(String drugItems) {
-		DrugItems = drugItems;
+	public void setDrugitems(Long drugitems) {
+		this.drugitems = drugitems;
 	}
 
-	public Long getTotalAmount() {
-		return TotalAmount;
+	public Long getTotalamount() {
+		return totalamount;
 	}
 
-	public void setTotalAmount(Long totalAmount) {
-		TotalAmount = totalAmount;
-	}
-
-	public Bill getBillingProcess() {
-		return DrugDetails;
-	}
-
-	public void setBillingProcess(Bill billingProcess) {
-		DrugDetails = billingProcess;
+	public void setTotalamount(Long totalamount) {
+		this.totalamount = totalamount;
 	}
 
 	@Override
 	public String toString() {
-		return "Bill [No=" + No + ", CustomerId=" + CustomerId + ", DoctorName=" + DoctorName + ", DrugItems="
-				+ DrugItems + ", TotalAmount=" + TotalAmount + ", BillingProcess=" + DrugDetails + "]";
+		return "Bill [no=" + no + ", customerid=" + customerid + ", doctorname=" + doctorname + ", drugitems="
+				+ drugitems + ", totalamount=" + totalamount + "]";
 	}
 
-	public Bill() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
 	
 }

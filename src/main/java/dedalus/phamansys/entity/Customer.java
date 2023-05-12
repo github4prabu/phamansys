@@ -13,54 +13,47 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name = "Customer")
+@Table(name = "pms_customer")
 public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long CustomerId;
+	private Long customerid;
 	
 	@Column(nullable = false,unique = true)
-	private String CustomerName;
+	private String customername;
 
-	@OneToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "CustomerId", referencedColumnName = "Id")
-	private Customer DrugDetails;
-
-	public Long getCustomerId() {
-		return CustomerId;
+	public Long getCustomerid() {
+		return customerid;
 	}
 
-	public void setCustomerId(Long customerId) {
-		CustomerId = customerId;
+	public void setCustomerid(Long customerid) {
+		this.customerid = customerid;
 	}
 
-	public String getCustomerName() {
-		return CustomerName;
+	public String getCustomername() {
+		return customername;
 	}
 
-	public void setCustomerName(String customerName) {
-		CustomerName = customerName;
-	}
-
-	public Customer getCustomerDetails() {
-		return DrugDetails;
-	}
-
-	public void setCustomerDetails(Customer customerDetails) {
-		DrugDetails = customerDetails;
+	public void setCustomername(String customername) {
+		this.customername = customername;
 	}
 
 	@Override
 	public String toString() {
-		return "Customer [CustomerId=" + CustomerId + ", CustomerName=" + CustomerName + ", CustomerDetails="
-				+ DrugDetails + "]";
+		return "Customer [customerid=" + customerid + ", customername=" + customername + "]";
+	}
+
+	public Customer(Long customerid, String customername) {
+		super();
+		this.customerid = customerid;
+		this.customername = customername;
 	}
 
 	public Customer() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
+
+
 }
